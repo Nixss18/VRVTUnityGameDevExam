@@ -9,12 +9,20 @@ public class EnemyAI : MonoBehaviour
     GameObject player;
     NavMeshAgent agent;
 
-    [SerializeField] LayerMask groundPlayer, playerLayer;
+    [SerializeField] LayerMask groundLayer, playerLayer;
+
+
+
+  
+
+    
+    
+
 
     //patrol
+    [SerializeField] float range;
     Vector3 destPoint;
     bool walkpointSet;
-    [SerializeField] float range;
 
 
     //state change
@@ -60,7 +68,7 @@ public class EnemyAI : MonoBehaviour
 
     void Attack()
     {
-        
+
     }
 
 
@@ -71,7 +79,7 @@ public class EnemyAI : MonoBehaviour
 
         destPoint = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
 
-        if (Physics.Raycast(destPoint, Vector3.down, groundPlayer))
+        if (Physics.Raycast(destPoint, Vector3.down, groundLayer))
         {
             walkpointSet = true;
         }
