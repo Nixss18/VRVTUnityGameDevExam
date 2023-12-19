@@ -362,6 +362,7 @@
 "Assets/Game/Healing.cs"
 "Assets/Game/Healthbar.cs"
 "Assets/Game/HealthBarPlayer.cs"
+"Assets/Game/MainMenuScript.cs"
 "Assets/Game/MoveCamera.cs"
 "Assets/Game/PlayerCam.cs"
 "Assets/Game/PlayerHealthBar.cs"

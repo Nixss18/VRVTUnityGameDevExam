@@ -14,6 +14,16 @@ public class BulletScript : MonoBehaviour
             Destroy(gameObject);
         }
 
+
+        if (other.CompareTag("RealPlayer"))
+        {
+            print("destroy");
+
+            other.GetComponent<PlayerHealthBar>().TakeDamage(1);
+            Destroy(gameObject);
+        }
+
+
         if (other.CompareTag("Map"))
         {
             Destroy(gameObject);
