@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -28,12 +29,20 @@ public class EnemyAI : MonoBehaviour
     private float currentHealth;
 
 
+    //shooting
+    [SerializeField] private float timer = 5;
+    private float bulletTime;
+    public GameObject enemyBullet;
+    public Transform spawnPoint;
+    public float bulletSpeed = 50;
+
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
         currentHealth = maxHealth;
-        print(currentHealth);
+
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
 
@@ -48,6 +57,11 @@ public class EnemyAI : MonoBehaviour
         if(!playerInSight && !playerInAttackRange) Patrol();
         if(playerInSight && !playerInAttackRange) Chase();
         if(playerInSight && playerInAttackRange) Attack();
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
 
@@ -70,6 +84,20 @@ public class EnemyAI : MonoBehaviour
     void Attack()
     {
 
+        bulletTime -= Time.deltaTime;
+
+        if (bulletTime > 0) return;
+
+        bulletTime = timer;
+
+        spawnPoint.LookAt(player.transform);
+
+
+        GameObject bullet = Instantiate(enemyBullet, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+
+        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+
+        bulletRb.AddForce(spawnPoint.transform.forward * bulletSpeed);
     }
 
 
@@ -87,14 +115,24 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-    void OnMouseDown() {
-        currentHealth -= Random.Range(0.5f, 1.5f);
-        print(currentHealth);
-        if (currentHealth <=0) {
-            Destroy(agent);
-        } else {
-            healthbar.UpdateHealthBar(maxHealth, currentHealth);
-        }
+    public void TakeDamage(float amount)
+    {
+        currentHealth -= amount;
+        healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
 
+
+    public void Heal(float amount)
+    {
+        currentHealth += amount;
+        print("heal is called");
+        healthbar.UpdateHealthBar(maxHealth, currentHealth);
+    }
+
+
+
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
 }

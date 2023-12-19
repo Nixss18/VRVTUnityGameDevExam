@@ -9,6 +9,8 @@ public class Healthbar : MonoBehaviour
 
     private Camera cam;
 
+
+
     void Start()
     {
         cam = Camera.main;
@@ -23,8 +25,13 @@ public class Healthbar : MonoBehaviour
 
 
 
+   
+
+
+
     void Update()
     {
         transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position);
     }
+
 }
