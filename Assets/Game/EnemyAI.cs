@@ -11,14 +11,6 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] LayerMask groundLayer, playerLayer;
 
-
-
-  
-
-    
-    
-
-
     //patrol
     [SerializeField] float range;
     Vector3 destPoint;
@@ -30,10 +22,19 @@ public class EnemyAI : MonoBehaviour
     bool playerInSight, playerInAttackRange;
 
 
+    //health
+    [SerializeField] private Healthbar healthbar;
+    [SerializeField] private float maxHealth = 10;
+    private float currentHealth;
+
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
+        currentHealth = maxHealth;
+        print(currentHealth);
+        healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
 
 
@@ -85,5 +86,15 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+
+    void OnMouseDown() {
+        currentHealth -= Random.Range(0.5f, 1.5f);
+        print(currentHealth);
+        if (currentHealth <=0) {
+            Destroy(agent);
+        } else {
+            healthbar.UpdateHealthBar(maxHealth, currentHealth);
+        }
+    }
 
 }
