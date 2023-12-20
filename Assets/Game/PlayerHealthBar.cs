@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthBar : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerHealthBar : MonoBehaviour
     private float currentHealth;
 
     public HealthBarPlayer healthBar;
+
+    public GameOverScreen gameOverScreen;
 
     private void Start()
     {
@@ -22,6 +25,19 @@ public class PlayerHealthBar : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetSlider(currentHealth);
+
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+
+
+    private void Die()
+    {
+        SceneManager.LoadScene("EndScreen");
     }
 
 }

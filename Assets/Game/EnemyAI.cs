@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -35,6 +36,10 @@ public class EnemyAI : MonoBehaviour
     public GameObject enemyBullet;
     public Transform spawnPoint;
     public float bulletSpeed = 50;
+
+
+    //GameOverScreen
+    public GameOverScreen GameOverScreen;
 
 
     private void Start()
@@ -122,17 +127,11 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-    public void Heal(float amount)
-    {
-        currentHealth += amount;
-        print("heal is called");
-        healthbar.UpdateHealthBar(maxHealth, currentHealth);
-    }
-
 
 
     private void Die()
     {
         Destroy(gameObject);
+        SceneManager.LoadScene("EndScreen");
     }
 }

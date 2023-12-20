@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657832, g: 0.49641222, b: 0.57481664, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -791,6 +791,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 4469617866043670604, guid: abe7cdb24b78f87489bde0596c4d1055, type: 3}
   spawnPoint: {fileID: 884724850}
   bulletSpeed: 1000
+  GameOverScreen: {fileID: 0}
 --- !u!136 &444993723
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -850,7 +851,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -478, y: 381}
+  m_AnchoredPosition: {x: -539, y: 253}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &448171043
@@ -1032,7 +1033,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -11.9, z: 0}
-  m_LocalScale: {x: 50, y: 1, z: 50}
+  m_LocalScale: {x: 150, y: 1, z: 150}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1547,8 +1548,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a87e9d820623f4fa5a5c9d3e358e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSensitivity: 1500
-  ySensitivity: 1500
+  xSensitivity: 500
+  ySensitivity: 500
   orientation: {fileID: 835260651}
 --- !u!1 &1316546872
 GameObject:
@@ -2081,6 +2082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   healthBar: {fileID: 448171043}
+  gameOverScreen: {fileID: 0}
 --- !u!136 &1824093878
 CapsuleCollider:
   m_ObjectHideFlags: 0
