@@ -38,9 +38,6 @@ public class EnemyAI : MonoBehaviour
     public float bulletSpeed = 50;
 
 
-    //GameOverScreen
-    public GameOverScreen GameOverScreen;
-
 
     private void Start()
     {

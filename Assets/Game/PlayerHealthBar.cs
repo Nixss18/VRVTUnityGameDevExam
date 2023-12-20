@@ -11,7 +11,6 @@ public class PlayerHealthBar : MonoBehaviour
 
     public HealthBarPlayer healthBar;
 
-    public GameOverScreen gameOverScreen;
 
     private void Start()
     {
